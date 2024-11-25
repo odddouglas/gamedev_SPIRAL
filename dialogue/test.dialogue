@@ -1,11 +1,12 @@
-~ this_is_a_node_title
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
-=> END
+~ pickup_ornot
+odddouglas: [shake rate=20 level=10][[Wow!|God!|Oh!]][/shake], What's this?
+odddouglas: Pick up? or not?.
+
+- (Pick it up)
+	if not Game.CAN_PICKUP:
+		set Game.CAN_PICKUP = true
+	odddouglas: Hope it helped.
+- (Ignore it)
+	odddouglas: Useless.
+- (Think about it) 
+	=> pickup_ornot
