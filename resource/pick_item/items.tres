@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dwlohlphr5wrw"]
 
 [ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_4nfkd"]
-[ext_resource type="Texture2D" uid="uid://0rft8xu0ge68" path="res://resource/import/icon/icon.svg" id="2_qumci"]
+[ext_resource type="Texture2D" uid="uid://0rft8xu0ge68" path="res://assets/icon/icon.svg" id="2_qumci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_begb8"]
 

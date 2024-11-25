@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=3 uid="uid://dxavgyl6lna43"]
 
-[ext_resource type="Texture2D" uid="uid://cmh4spn43ts27" path="res://resource/import/tileset/Character Base Sprite Sheet.png" id="1_3syfa"]
+[ext_resource type="Texture2D" uid="uid://cmh4spn43ts27" path="res://assets/tileset/Character Base Sprite Sheet.png" id="1_3syfa"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_faf78"]
 [ext_resource type="Script" path="res://scripts/animation_controller.gd" id="3_rvxbu"]
 [ext_resource type="Shape2D" uid="uid://cxwllsy33ydci" path="res://resource/player/player_collisionshape.tres" id="4_s46f7"]
