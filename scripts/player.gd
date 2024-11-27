@@ -69,3 +69,5 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if Game.CAN_PICKUP:
 		INTERACT_AREA.queue_free() # 销毁交互区域
 		Game.CAN_PICKUP = false # 限制角色进行拾取
+
+#test1
