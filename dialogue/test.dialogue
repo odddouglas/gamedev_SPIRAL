@@ -1,7 +1,7 @@
 ~ pickup_ornot
 odddouglas: [shake rate=20 level=10][[Wow!|God!|Oh!]][/shake], What's this?
 odddouglas: Pick up? or not?.
-
+#test
 - (Pick it up)
 	if not Game.CAN_PICKUP:
 		set Game.CAN_PICKUP = true
