@@ -63,11 +63,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	#resource这个参数不用也要传
 	print("Dialogue finished")
-	
 	Game.CAN_MOVE = true # 解除角色移动的限制
-
 	if Game.CAN_PICKUP:
 		INTERACT_AREA.queue_free() # 销毁交互区域
 		Game.CAN_PICKUP = false # 限制角色进行拾取
-
-#test1
