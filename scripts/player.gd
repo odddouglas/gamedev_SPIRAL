@@ -69,3 +69,4 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		Game.CAN_PICKUP = false # 限制角色进行拾取
 
 #buffer
+#buffer
