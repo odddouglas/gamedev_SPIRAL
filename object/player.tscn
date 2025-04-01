@@ -1,7 +1,6 @@
-[gd_scene load_steps=72 format=3 uid="uid://dxavgyl6lna43"]
+[gd_scene load_steps=71 format=3 uid="uid://dxavgyl6lna43"]
 
 [ext_resource type="Texture2D" uid="uid://cmh4spn43ts27" path="res://assets/tileset/Character Base Sprite Sheet.png" id="1_3syfa"]
-[ext_resource type="Script" uid="uid://0p64ty0leoe1" path="res://scripts/player.gd" id="1_faf78"]
 [ext_resource type="Script" uid="uid://j7512i42yc2k" path="res://scripts/animation_controller.gd" id="3_rvxbu"]
 [ext_resource type="Shape2D" uid="uid://cxwllsy33ydci" path="res://resource/player/player_collisionshape.tres" id="4_s46f7"]
 
@@ -530,15 +529,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 14
-script = ExtResource("1_faf78")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rqpcb")
-animation = &"front_walk"
+animation = &"back_run"
 autoplay = "front_idle"
-frame_progress = 0.504335
 script = ExtResource("3_rvxbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
