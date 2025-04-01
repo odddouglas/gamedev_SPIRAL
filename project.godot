@@ -10,15 +10,15 @@ config_version=5
 
 [application]
 
-config/name="dungeon"
+config/name="SPIRAL"
 run/main_scene="res://scenes/world1.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://assets/icon/icon.svg"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Game="*res://scripts/game.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 

@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqxdd88nhupuu"]
+
+[ext_resource type="Script" uid="uid://o4jllb2nv65w" path="res://scripts/quick_menu.gd" id="1_y5pdl"]
+
+[node name="SelectUI" type="CanvasLayer"]
+
+[node name="QuickMenu" type="Control" parent="."]
+show_behind_parent = true
+layout_mode = 3
+anchor_left = 0.49
+anchor_top = 0.497
+anchor_right = 0.49
+anchor_bottom = 0.497
+offset_left = -0.47998
+offset_top = -0.0559998
+offset_right = -0.47998
+offset_bottom = -0.0559998
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_y5pdl")
+
+[node name="Pos" type="Control" parent="QuickMenu"]
+anchors_preset = 0
+
+[node name="Button1" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -63.0
+offset_right = -77.0
+offset_bottom = -32.0
+text = "1"
+
+[node name="Button2" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = -63.0
+offset_right = -54.0
+offset_bottom = -32.0
+text = "2"
+
+[node name="Button3" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -63.0
+offset_right = -32.0
+offset_bottom = -32.0
+text = "3"
+
+[node name="Button4" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -63.0
+offset_right = -8.0
+offset_bottom = -32.0
+text = "4"
+
+[node name="Button5" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = -64.0
+offset_right = 67.0
+offset_bottom = -33.0
+text = "7"
+
+[node name="Button6" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -63.0
+offset_right = 16.0
+offset_bottom = -32.0
+text = "5"
+
+[node name="Button7" type="Button" parent="QuickMenu/Pos"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -64.0
+offset_right = 41.0
+offset_bottom = -33.0
+text = "6"

@@ -62,11 +62,16 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 #对话框结束的处理函数（需要在ready函数中connect）
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	#resource这个参数不用也要传
-	print("Dialogue finished")
+	print("Dialogue finished:", resource)
 	Game.CAN_MOVE = true # 解除角色移动的限制
 	if Game.CAN_PICKUP:
 		INTERACT_AREA.queue_free() # 销毁交互区域
 		Game.CAN_PICKUP = false # 限制角色进行拾取
 
-
+#TODO:此处的镜面对象的帧更新是有问题的
+func get_mirrored_frame():
+	var frame = animated_sprite_2d.frame
+	if frame < 4 or frame > 7 and frame < 12:
+		return frame + 4
+	return frame - 4
 #master
