@@ -429,7 +429,7 @@ tile_set = SubResource("TileSet_j2vt7")
 [node name="YSort" type="Node2D" parent="."]
 
 [node name="Mirror" parent="YSort" node_paths=PackedStringArray("character") instance=ExtResource("6_gt337")]
-position = Vector2(340, 217)
+position = Vector2(339, 199)
 script = ExtResource("7_o24d1")
 character = NodePath("../Player")
 
