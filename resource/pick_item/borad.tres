@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://pq0xtl1rbxyb"]
+
+[ext_resource type="Script" uid="uid://c6cm20ydkbb3r" path="res://scripts/bagbag/item_data.gd" id="1_hiv3o"]
+[ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_qx1kv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx1kv"]
+atlas = ExtResource("1_qx1kv")
+region = Rect2(128, 112, 16, 16)
+
+[resource]
+script = ExtResource("1_hiv3o")
+item_name = "borad"
+stackable = true
+item_texture = SubResource("AtlasTexture_qx1kv")
+description = "这是一块板子"
+metadata/_custom_type_script = "uid://c6cm20ydkbb3r"
