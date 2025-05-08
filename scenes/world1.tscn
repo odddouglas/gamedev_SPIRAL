@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://30tqs6xniq1w"]
+[gd_scene load_steps=25 format=4 uid="uid://30tqs6xniq1w"]
 
 [ext_resource type="PackedScene" uid="uid://dxavgyl6lna43" path="res://object/player.tscn" id="1_fyhpy"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_q3jjg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cyf3lf37rnh14" path="res://resource/pick_item/key.tres" id="8_2ifxk"]
 [ext_resource type="PackedScene" uid="uid://cqxdd88nhupuu" path="res://scenes/select_ui.tscn" id="9_62ogi"]
 [ext_resource type="Resource" uid="uid://dmwixbbuaqxpv" path="res://resource/pick_item/torch.tres" id="9_r56qy"]
+[ext_resource type="Resource" uid="uid://cbelnlvscr0ve" path="res://resource/pick_item/red_medicine.tres" id="10_2ifxk"]
 [ext_resource type="Script" uid="uid://dw5j57pr7dlcu" path="res://scripts/bagbag/ui/ui_interface.gd" id="10_cqo20"]
 [ext_resource type="PackedScene" uid="uid://b82cyx5wyeawd" path="res://scenes/ui/bag.tscn" id="14_bu1hf"]
 [ext_resource type="PackedScene" uid="uid://c70bbprp3thya" path="res://scenes/ui/slot.tscn" id="16_mjk3i"]
@@ -435,9 +436,21 @@ quantity = 3
 item_data = ExtResource("9_r56qy")
 metadata/_custom_type_script = "uid://brmwbfh740o3d"
 
+[sub_resource type="Resource" id="Resource_r56qy"]
+script = ExtResource("7_mjk3i")
+quantity = 7
+item_data = ExtResource("9_r56qy")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_eo7bd"]
+script = ExtResource("7_mjk3i")
+quantity = 4
+item_data = ExtResource("10_2ifxk")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
 [sub_resource type="Resource" id="Resource_yeu16"]
 script = ExtResource("6_ulrur")
-slot_datas = Array[ExtResource("7_mjk3i")]([SubResource("Resource_ulrur"), SubResource("Resource_mjk3i"), null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+slot_datas = Array[ExtResource("7_mjk3i")]([SubResource("Resource_ulrur"), SubResource("Resource_mjk3i"), SubResource("Resource_r56qy"), SubResource("Resource_eo7bd"), null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://bqewmlmpabixt"
 
 [node name="world" type="Node2D"]
@@ -490,3 +503,4 @@ layout_mode = 1
 
 [node name="grabbed_slot" parent="CanvasLayer/ui_interface" instance=ExtResource("16_mjk3i")]
 visible = false
+mouse_filter = 2

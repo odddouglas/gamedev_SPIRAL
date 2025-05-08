@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var inventory_data: InventoryData
-
+@export_range(0,100) var satiety: int = 5
 
 @onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D # 控制玩家动画的节点
 
@@ -16,6 +16,7 @@ var INTERACT_AREA: Area2D = null # 停留的交互区域
 func _ready() -> void:
 	# 连接对话管理器的对话结束事件
 	DialogueManager.connect("dialogue_ended", _on_dialogue_ended)
+	PlayerManager.player = self #绑定角色与状态
 
 # 物理帧处理函数
 func _physics_process(delta: float) -> void:
@@ -78,3 +79,7 @@ func get_mirrored_frame():
 		return frame + 4
 	return frame - 4
 #master
+
+func aument_satiety(satiety_value: int):
+	satiety += satiety_value
+	#print(%s,satiety) #检查饱腹值

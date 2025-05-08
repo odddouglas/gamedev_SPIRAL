@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c6cm20ydkbb3r" path="res://scripts/bagbag/item_data.gd" id="1_csn2g"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_nsbe6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dr0yx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsbe6"]
 atlas = ExtResource("1_nsbe6")
 region = Rect2(0, 144, 16, 16)
 
@@ -11,6 +11,6 @@ region = Rect2(0, 144, 16, 16)
 script = ExtResource("1_csn2g")
 item_name = "torch"
 stackable = true
-item_texture = SubResource("AtlasTexture_dr0yx")
+item_texture = SubResource("AtlasTexture_nsbe6")
 description = "这是一个火把"
 metadata/_custom_type_script = "uid://c6cm20ydkbb3r"

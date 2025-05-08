@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataMedicine" load_steps=4 format=3 uid="uid://cbelnlvscr0ve"]
+
+[ext_resource type="Script" uid="uid://b1qfk6t2c3wfq" path="res://scripts/bagbag/item_data_medicine.gd" id="1_mi8wa"]
+[ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_w6qfg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2epks"]
+atlas = ExtResource("1_w6qfg")
+region = Rect2(144, 128, 16, 16)
+
+[resource]
+script = ExtResource("1_mi8wa")
+satiety_value = 6
+item_name = "redmedicine"
+stackable = true
+item_texture = SubResource("AtlasTexture_2epks")
+description = "这是一瓶红药"
+metadata/_custom_type_script = "uid://b1qfk6t2c3wfq"
