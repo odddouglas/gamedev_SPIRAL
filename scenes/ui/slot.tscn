@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c70bbprp3thya"]
+
+[ext_resource type="FontFile" uid="uid://bcbgb7km4qmne" path="res://assets/font/fusion-pixel-font-10px-monospaced-otf-v2024.05.12/fusion-pixel-10px-monospaced-ja.otf" id="1_jkamp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfi0f"]
+region = Rect2(96, 128, 16, 16)
+
+[node name="slot" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bfi0f")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_jkamp")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+vertical_alignment = 2

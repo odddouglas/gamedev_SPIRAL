@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cyf3lf37rnh14"]
+
+[ext_resource type="Script" uid="uid://c6cm20ydkbb3r" path="res://scripts/bagbag/item_data.gd" id="1_mmr83"]
+[ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_qc11h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu0k1"]
+atlas = ExtResource("1_qc11h")
+region = Rect2(144, 144, 16, 16)
+
+[resource]
+script = ExtResource("1_mmr83")
+item_name = "key"
+stackable = true
+item_texture = SubResource("AtlasTexture_lu0k1")
+description = "这是一把钥匙"
+metadata/_custom_type_script = "uid://c6cm20ydkbb3r"
