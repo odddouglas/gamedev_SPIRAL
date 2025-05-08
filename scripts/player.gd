@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
+@export var inventory_data: InventoryData
+
+
 @onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D # 控制玩家动画的节点
 
 #规定角色相关常量

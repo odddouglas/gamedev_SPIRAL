@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://30tqs6xniq1w"]
+[gd_scene load_steps=22 format=4 uid="uid://30tqs6xniq1w"]
 
 [ext_resource type="PackedScene" uid="uid://dxavgyl6lna43" path="res://object/player.tscn" id="1_fyhpy"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_q3jjg"]
@@ -7,8 +7,15 @@
 [ext_resource type="Resource" uid="uid://dwlohlphr5wrw" path="res://resource/pick_item/items.tres" id="4_hgl8f"]
 [ext_resource type="Script" uid="uid://0p64ty0leoe1" path="res://scripts/player.gd" id="5_rli88"]
 [ext_resource type="PackedScene" uid="uid://beftufaej1xsj" path="res://object/mirror.tscn" id="6_gt337"]
+[ext_resource type="Script" uid="uid://bqewmlmpabixt" path="res://scripts/bagbag/inventory_data.gd" id="6_ulrur"]
+[ext_resource type="Script" uid="uid://brmwbfh740o3d" path="res://scripts/bagbag/slot_data.gd" id="7_mjk3i"]
 [ext_resource type="Script" uid="uid://blju32th127tt" path="res://scripts/mirror.gd" id="7_o24d1"]
+[ext_resource type="Resource" uid="uid://cyf3lf37rnh14" path="res://resource/pick_item/key.tres" id="8_2ifxk"]
 [ext_resource type="PackedScene" uid="uid://cqxdd88nhupuu" path="res://scenes/select_ui.tscn" id="9_62ogi"]
+[ext_resource type="Resource" uid="uid://dmwixbbuaqxpv" path="res://resource/pick_item/torch.tres" id="9_r56qy"]
+[ext_resource type="Script" uid="uid://dw5j57pr7dlcu" path="res://scripts/bagbag/ui/ui_interface.gd" id="10_cqo20"]
+[ext_resource type="PackedScene" uid="uid://b82cyx5wyeawd" path="res://scenes/ui/bag.tscn" id="14_bu1hf"]
+[ext_resource type="PackedScene" uid="uid://c70bbprp3thya" path="res://scenes/ui/slot.tscn" id="16_mjk3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2rag"]
 texture = ExtResource("1_q3jjg")
@@ -416,6 +423,23 @@ terrain_set_0/terrain_1/name = "floor"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_q2rag")
 
+[sub_resource type="Resource" id="Resource_ulrur"]
+script = ExtResource("7_mjk3i")
+quantity = 1
+item_data = ExtResource("8_2ifxk")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_mjk3i"]
+script = ExtResource("7_mjk3i")
+quantity = 3
+item_data = ExtResource("9_r56qy")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_yeu16"]
+script = ExtResource("6_ulrur")
+slot_datas = Array[ExtResource("7_mjk3i")]([SubResource("Resource_ulrur"), SubResource("Resource_mjk3i"), null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://bqewmlmpabixt"
+
 [node name="world" type="Node2D"]
 position = Vector2(17, 15)
 
@@ -437,6 +461,7 @@ character = NodePath("../Player")
 visibility_layer = 14
 position = Vector2(339, 229)
 script = ExtResource("5_rli88")
+inventory_data = SubResource("Resource_yeu16")
 metadata/_edit_group_ = true
 
 [node name="item" parent="." instance=ExtResource("3_fcaye")]
@@ -448,3 +473,20 @@ inventory_item = ExtResource("4_hgl8f")
 stream = ExtResource("2_n1d4h")
 
 [node name="SelectUI" parent="." instance=ExtResource("9_62ogi")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui_interface" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_cqo20")
+
+[node name="bag" parent="CanvasLayer/ui_interface" instance=ExtResource("14_bu1hf")]
+layout_mode = 1
+
+[node name="grabbed_slot" parent="CanvasLayer/ui_interface" instance=ExtResource("16_mjk3i")]
+visible = false
