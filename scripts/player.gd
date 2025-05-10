@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	var is_running = Input.is_action_pressed("shift")
 	
 	#碰撞射线长度
-	var ray_cast_length: int = 4
+	var ray_cast_length: int = 5
 	
 	# 获取玩家的输入方向向量
 	var direction = Input.get_vector("left", "right", "up", "down")
