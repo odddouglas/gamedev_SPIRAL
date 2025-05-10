@@ -5,6 +5,8 @@ class_name Player
 @export_range(0,100) var satiety: int = 5
 
 @onready var animated_sprite_2d: AnimationController = $AnimatedSprite2D # 控制玩家动画的节点
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+
 
 #规定角色相关常量
 const SPEED_WALK = 5000.0 # 步行速度
@@ -20,7 +22,7 @@ func _ready() -> void:
 
 # 物理帧处理函数
 func _physics_process(delta: float) -> void:
-
+	
 	# 检测是否处于可以移动的状态，如果不是，则直接return
 	if not Game.CAN_MOVE:
 		velocity = Vector2.ZERO # 停止移动
@@ -30,13 +32,20 @@ func _physics_process(delta: float) -> void:
 	# 检测是否按住了 Shift 键
 	var is_running = Input.is_action_pressed("shift")
 	
+	#碰撞射线长度
+	var ray_cast_length: int = 4
+	
 	# 获取玩家的输入方向向量
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	# 如果有方向输入，设置速度矢量
-	if direction:
+	if direction and direction.length() > 0:
+		#print(direction.length())
 		var speed = SPEED_RUN if is_running else SPEED_WALK # 根据是否跑步选择速度
 		velocity = direction * speed * delta
+		
+		#碰撞射线的方向与角色一致
+		ray_cast_2d.target_position = direction * ray_cast_length
 
 		# 播放对应动画
 		if is_running:
@@ -50,7 +59,9 @@ func _physics_process(delta: float) -> void:
 
 		# 播放静止动画
 		animated_sprite_2d.play_idle_animation()
+	
 
+	
 	# 移动角色并处理碰撞
 	move_and_slide()
 
@@ -83,3 +94,12 @@ func get_mirrored_frame():
 func aument_satiety(satiety_value: int):
 	satiety += satiety_value
 	#print(%s,satiety) #检查饱腹值
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEvent:
+		if Input.is_action_just_pressed("ui_f"):
+			interact()
+
+func interact():
+	if ray_cast_2d.is_colliding():
+		ray_cast_2d.get_collider().player_interact()

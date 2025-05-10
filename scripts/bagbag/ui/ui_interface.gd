@@ -36,7 +36,7 @@ func on_inventory_interact(inventory_data:InventoryData, index:int, button:int):
 			
 		
 	grabbed_slot_update()
-	print(grabbed_slot_data)
+	#print(grabbed_slot_data)
 
 #次态更新
 func grabbed_slot_update():

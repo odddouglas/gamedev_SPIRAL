@@ -552,4 +552,9 @@ collision_mask = 8
 position = Vector2(0, 18)
 shape = ExtResource("4_s46f7")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 18)
+scale = Vector2(5, 5)
+target_position = Vector2(0, 4)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

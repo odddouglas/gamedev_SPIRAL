@@ -1,0 +1,56 @@
+[gd_scene load_steps=15 format=3 uid="uid://x64n3qkj0wca"]
+
+[ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_kdms7"]
+[ext_resource type="Script" uid="uid://buofj1u7xpnik" path="res://scripts/bagbag/box.gd" id="1_ks2v0"]
+[ext_resource type="Script" uid="uid://bqewmlmpabixt" path="res://scripts/bagbag/inventory_data.gd" id="2_dijgj"]
+[ext_resource type="Script" uid="uid://brmwbfh740o3d" path="res://scripts/bagbag/slot_data.gd" id="3_faous"]
+[ext_resource type="Resource" uid="uid://cyf3lf37rnh14" path="res://resource/pick_item/key.tres" id="4_wavyb"]
+[ext_resource type="Resource" uid="uid://dmwixbbuaqxpv" path="res://resource/pick_item/torch.tres" id="5_igdtg"]
+[ext_resource type="Resource" uid="uid://cbelnlvscr0ve" path="res://resource/pick_item/red_medicine.tres" id="6_anxlp"]
+
+[sub_resource type="Resource" id="Resource_yches"]
+script = ExtResource("3_faous")
+quantity = 1
+item_data = ExtResource("4_wavyb")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_h6rpn"]
+script = ExtResource("3_faous")
+quantity = 4
+item_data = ExtResource("5_igdtg")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_gu2bm"]
+script = ExtResource("3_faous")
+quantity = 5
+item_data = ExtResource("5_igdtg")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_x8w8a"]
+script = ExtResource("3_faous")
+quantity = 6
+item_data = ExtResource("6_anxlp")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_ym20b"]
+script = ExtResource("2_dijgj")
+slot_datas = Array[ExtResource("3_faous")]([SubResource("Resource_yches"), SubResource("Resource_h6rpn"), SubResource("Resource_gu2bm"), SubResource("Resource_x8w8a"), null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://bqewmlmpabixt"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wl3e"]
+atlas = ExtResource("1_kdms7")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odd20"]
+
+[node name="box" type="StaticBody2D"]
+script = ExtResource("1_ks2v0")
+inventory_data = SubResource("Resource_ym20b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_7wl3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_odd20")
