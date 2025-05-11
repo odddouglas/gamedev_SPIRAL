@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://30tqs6xniq1w"]
+[gd_scene load_steps=29 format=4 uid="uid://30tqs6xniq1w"]
 
 [ext_resource type="PackedScene" uid="uid://dxavgyl6lna43" path="res://object/player.tscn" id="1_fyhpy"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_q3jjg"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b82cyx5wyeawd" path="res://scenes/ui/bag.tscn" id="14_bu1hf"]
 [ext_resource type="PackedScene" uid="uid://c70bbprp3thya" path="res://scenes/ui/slot.tscn" id="16_mjk3i"]
 [ext_resource type="PackedScene" uid="uid://x64n3qkj0wca" path="res://scenes/box.tscn" id="19_eo7bd"]
+[ext_resource type="PackedScene" uid="uid://7rpxy7qfxe5f" path="res://scenes/ui/box_ui.tscn" id="20_c2h5s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2rag"]
 texture = ExtResource("1_q3jjg")
@@ -513,10 +514,15 @@ script = ExtResource("10_cqo20")
 
 [node name="grabbed_slot" parent="CanvasLayer/ui_interface" instance=ExtResource("16_mjk3i")]
 visible = false
+z_index = 50
 offset_right = 16.0
 offset_bottom = 16.0
 mouse_filter = 2
 
 [node name="bag" parent="CanvasLayer/ui_interface" instance=ExtResource("14_bu1hf")]
+visible = false
+layout_mode = 1
+
+[node name="bag2" parent="CanvasLayer/ui_interface" instance=ExtResource("20_c2h5s")]
 visible = false
 layout_mode = 1

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://7rpxy7qfxe5f"]
+[gd_scene load_steps=7 format=3 uid="uid://7rpxy7qfxe5f"]
 
+[ext_resource type="Script" uid="uid://cgnj7ad1vkwbo" path="res://scripts/bagbag/ui/box_ui.gd" id="1_krvsm"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_wdeor"]
 [ext_resource type="FontFile" uid="uid://bcbgb7km4qmne" path="res://assets/font/fusion-pixel-font-10px-monospaced-otf-v2024.05.12/fusion-pixel-10px-monospaced-ja.otf" id="2_krvsm"]
 
@@ -11,17 +12,18 @@ texture_margin_right = 5.0
 texture_margin_bottom = 4.0
 region_rect = Rect2(64, 112, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_krvsm"]
+atlas = ExtResource("1_wdeor")
+region = Rect2(80, 128, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nykh6"]
 atlas = ExtResource("1_wdeor")
 region = Rect2(144, 96, 16, 16)
 
 [node name="bag" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+script = ExtResource("1_krvsm")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -44,6 +46,17 @@ theme_override_font_sizes/font_size = 10
 text = "箱子"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 58
+theme_override_constants/margin_top = 1
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer4"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_krvsm")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -134,3 +147,5 @@ layout_mode = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 4
+
+[connection signal="pressed" from="PanelContainer/MarginContainer4/TextureButton" to="." method="_on_texture_button_pressed"]

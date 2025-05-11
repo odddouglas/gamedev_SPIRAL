@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x64n3qkj0wca"]
+[gd_scene load_steps=16 format=3 uid="uid://x64n3qkj0wca"]
 
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_kdms7"]
 [ext_resource type="Script" uid="uid://buofj1u7xpnik" path="res://scripts/bagbag/box.gd" id="1_ks2v0"]
@@ -43,7 +43,10 @@ region = Rect2(80, 128, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odd20"]
 
-[node name="box" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dijgj"]
+radius = 14.4722
+
+[node name="box" type="StaticBody2D" groups=["box_inventory"]]
 script = ExtResource("1_ks2v0")
 inventory_data = SubResource("Resource_ym20b")
 
@@ -54,3 +57,11 @@ texture = SubResource("AtlasTexture_7wl3e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_odd20")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.79655, 1.7172)
+shape = SubResource("CircleShape2D_dijgj")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

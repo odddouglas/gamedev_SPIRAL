@@ -1,17 +1,20 @@
 extends Control
 
 @onready var item_grid: GridContainer = $PanelContainer/MarginContainer3/item_grid
-@onready var bag: Control = $"."
+
+signal box_close
 
 const Slot = preload("res://scenes/ui/slot.tscn")
-
-signal bag_close
 
 #设置背包信息
 func set_inventory_data(inventory_data: InventoryData):
 	inventory_data.inventory_update.connect(populate_inventory_data)
 	populate_inventory_data(inventory_data)
 	
+func clear_inventory_data(inventory_data: InventoryData):
+	inventory_data.inventory_update.disconnect(populate_inventory_data)
+
+
 
 func populate_inventory_data(inventory_data: InventoryData):
 	for i in item_grid.get_children():
@@ -28,12 +31,4 @@ func populate_inventory_data(inventory_data: InventoryData):
 
 
 func _on_texture_button_pressed() -> void:
-	bag_close.emit()
-
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_b"):
-		bag.visible = !bag.visible
-		if bag.visible:
-			Game.CAN_MOVE = false
-		else :
-			Game.CAN_MOVE = true
+	box_close.emit()
