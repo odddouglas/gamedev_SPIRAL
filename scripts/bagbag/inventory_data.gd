@@ -3,6 +3,8 @@ class_name InventoryData
 
 signal inventory_interact(inventory_data: InventoryData, index: int, button: int)
 signal inventory_update(inventory_data)  #更新背包
+signal shift_inventory_interact(inventory_data: InventoryData, index: int, button: int)
+
 
 @export var slot_datas: Array[SlotData]
 
@@ -77,6 +79,37 @@ func use_slot_data(index:int):
 	
 	inventory_update.emit(self)
 
+func pick_slot_updata(slot_data: SlotData) -> SlotData:
+	for slot in slot_datas:
+		if slot and slot.item_data == slot_data.item_data and slot_data.item_data.stackable:
+			var sum: int = slot.quantity + slot_data.quantity
+			slot_data.quantity = max(sum - 99, 0)
+			slot.quantity = min(99, sum)
+			if slot_data.quantity == 0:
+				slot_data = null
+				inventory_update.emit(self)
+				return slot_data
+				
+	for index in slot_datas.size():
+		if slot_datas[index] == null:
+			slot_datas[index] = slot_data
+			slot_data = null
+			break
+	inventory_update.emit(self)
+	return slot_data
+
+func slot_data_update(slot_data: SlotData, _index: int):
+	if slot_data:
+		slot_datas[_index] = slot_data
+		inventory_update.emit(self)
+		
+	if !slot_data:
+		slot_datas[_index] = slot_data
+		inventory_update.emit(self)
+
 
 func on_slot_clicked(index:int,button:int):
 	inventory_interact.emit(self,index,button)
+
+func on_shift_slot_clicked(index:int,button:int):
+	shift_inventory_interact.emit(self,index,button)

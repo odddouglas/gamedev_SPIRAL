@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://30tqs6xniq1w"]
+[gd_scene load_steps=31 format=4 uid="uid://30tqs6xniq1w"]
 
 [ext_resource type="PackedScene" uid="uid://dxavgyl6lna43" path="res://object/player.tscn" id="1_fyhpy"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_q3jjg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://cbelnlvscr0ve" path="res://resource/pick_item/red_medicine.tres" id="10_2ifxk"]
 [ext_resource type="Script" uid="uid://dw5j57pr7dlcu" path="res://scripts/bagbag/ui/ui_interface.gd" id="10_cqo20"]
 [ext_resource type="Resource" uid="uid://pq0xtl1rbxyb" path="res://resource/pick_item/borad.tres" id="11_r56qy"]
+[ext_resource type="Resource" uid="uid://bkdpqdyardam5" path="res://resource/pick_item/apple.tres" id="13_yeu16"]
 [ext_resource type="PackedScene" uid="uid://b82cyx5wyeawd" path="res://scenes/ui/bag.tscn" id="14_bu1hf"]
 [ext_resource type="PackedScene" uid="uid://c70bbprp3thya" path="res://scenes/ui/slot.tscn" id="16_mjk3i"]
 [ext_resource type="PackedScene" uid="uid://x64n3qkj0wca" path="res://scenes/box.tscn" id="19_eo7bd"]
@@ -457,9 +458,15 @@ quantity = 3
 item_data = ExtResource("11_r56qy")
 metadata/_custom_type_script = "uid://brmwbfh740o3d"
 
+[sub_resource type="Resource" id="Resource_2jj1a"]
+script = ExtResource("7_mjk3i")
+quantity = 4
+item_data = ExtResource("13_yeu16")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
 [sub_resource type="Resource" id="Resource_yeu16"]
 script = ExtResource("6_ulrur")
-slot_datas = Array[ExtResource("7_mjk3i")]([SubResource("Resource_ulrur"), SubResource("Resource_mjk3i"), SubResource("Resource_r56qy"), SubResource("Resource_eo7bd"), SubResource("Resource_c2h5s"), null, null, null, null, null, null, null, null, null, null, null])
+slot_datas = Array[ExtResource("7_mjk3i")]([SubResource("Resource_ulrur"), SubResource("Resource_mjk3i"), SubResource("Resource_r56qy"), SubResource("Resource_eo7bd"), SubResource("Resource_c2h5s"), SubResource("Resource_2jj1a"), null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://bqewmlmpabixt"
 
 [node name="world" type="Node2D"]

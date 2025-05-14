@@ -16,13 +16,13 @@ var grabbed_slot_data:SlotData
 func _ready():
 	bag.set_inventory_data(player.inventory_data)
 	player.inventory_data.inventory_interact.connect(on_inventory_interact)
+	player.inventory_data.shift_inventory_interact.connect(on_shift_inventory_interact)
 	
 	#箱子不止一个，打开更多箱子
 	for node in get_tree().get_nodes_in_group("box_inventory"):
 		node.toggle_inventory.connect(set_box_inventory)
 	for node in get_tree().get_nodes_in_group("box_inventory"):
 		node.exited_box.connect(clear_external_inventory)
-		
 	
 	Global.esc_close.connect(_esc_close)
 	connect("link_bag_close",Callable(self,"set_box_inventory"))
@@ -51,6 +51,7 @@ func set_external_inventory(_box_inventory):
 	box_inventory = _box_inventory
 	var inventory_data = box_inventory.inventory_data
 	inventory_data.inventory_interact.connect(on_inventory_interact)
+	inventory_data.shift_inventory_interact.connect(on_shift_inventory_interact)
 	bag_2.set_inventory_data(inventory_data)
 	bag_2.visible = true
 	Game.CAN_MOVE = false
@@ -59,6 +60,7 @@ func clear_external_inventory():
 	if box_inventory:
 		var inventory_data = box_inventory.inventory_data
 		inventory_data.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data.shift_inventory_interact.disconnect(on_shift_inventory_interact)
 		bag_2.clear_inventory_data(inventory_data)
 		bag_2.visible = false
 		bag.visible = false
@@ -69,6 +71,23 @@ func _process(_delta):
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position()
 
+func on_shift_inventory_interact(inventory_data:InventoryData, index:int, button:int):
+	if bag_2.visible:
+		match [inventory_data, button]:
+			[player.inventory_data, MOUSE_BUTTON_LEFT]:
+				#print("zheshibeibao")
+				var slot_data = player.inventory_data.slot_datas[index]
+				if slot_data:
+					slot_data = box_inventory.inventory_data.pick_slot_updata(slot_data)
+					player.inventory_data.slot_data_update(slot_data, index)
+					
+			[box_inventory.inventory_data, MOUSE_BUTTON_LEFT]:
+				#print("zheshixiangzi")
+				var slot_data = box_inventory.inventory_data.slot_datas[index]
+				if slot_data:
+					slot_data = player.inventory_data.pick_slot_updata(slot_data)
+					box_inventory.inventory_data.slot_data_update(slot_data, index)
+					
 
 func on_inventory_interact(inventory_data:InventoryData, index:int, button:int):
 	match [grabbed_slot_data, button]:
