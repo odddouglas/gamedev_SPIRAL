@@ -1,6 +1,6 @@
 extends Control
 
-@onready var item_grid: GridContainer = $PanelContainer/MarginContainer3/item_grid
+@onready var item_grid: GridContainer = $PanelContainer/VBoxContainer/MarginContainer/item_grid
 @onready var bag: Control = $"."
 
 const Slot = preload("res://scenes/ui/slot.tscn")
@@ -38,3 +38,5 @@ func _unhandled_input(event):
 			Game.CAN_MOVE = false
 		else :
 			Game.CAN_MOVE = true
+	if !bag.visible:
+		Game.CAN_MOVE = true

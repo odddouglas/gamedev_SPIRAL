@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://d260wyrtql2g8"]
+
+[ext_resource type="Script" uid="uid://naqtlkf362ei" path="res://scripts/bagbag/box_2.gd" id="1_ss2nc"]
+[ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="2_lwv6c"]
+[ext_resource type="Script" uid="uid://bqewmlmpabixt" path="res://scripts/bagbag/inventory_data.gd" id="2_s2sfw"]
+[ext_resource type="Script" uid="uid://brmwbfh740o3d" path="res://scripts/bagbag/slot_data.gd" id="3_xvpxa"]
+[ext_resource type="Resource" uid="uid://bkdpqdyardam5" path="res://resource/pick_item/apple.tres" id="4_lxj1p"]
+
+[sub_resource type="Resource" id="Resource_6jc7j"]
+script = ExtResource("3_xvpxa")
+quantity = 7
+item_data = ExtResource("4_lxj1p")
+metadata/_custom_type_script = "uid://brmwbfh740o3d"
+
+[sub_resource type="Resource" id="Resource_slfa8"]
+script = ExtResource("2_s2sfw")
+slot_datas = Array[ExtResource("3_xvpxa")]([SubResource("Resource_6jc7j"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://bqewmlmpabixt"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvip6"]
+atlas = ExtResource("2_lwv6c")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2sfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvpxa"]
+radius = 14.4722
+
+[node name="box_2" type="StaticBody2D" groups=["box_inventory"]]
+script = ExtResource("1_ss2nc")
+inventory_data = SubResource("Resource_slfa8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_nvip6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_s2sfw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.79655, 1.7172)
+shape = SubResource("CircleShape2D_xvpxa")

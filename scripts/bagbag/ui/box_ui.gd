@@ -1,6 +1,6 @@
 extends Control
 
-@onready var item_grid: GridContainer = $PanelContainer/MarginContainer3/item_grid
+@onready var item_grid: GridContainer = $PanelContainer/VBoxContainer/MarginContainer/item_grid
 
 signal box_close
 

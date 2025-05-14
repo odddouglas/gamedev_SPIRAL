@@ -43,7 +43,7 @@ func set_box_inventory(_box_inventory):
 			set_external_inventory(_box_inventory)
 			bag.visible = true
 		else :
-			clear_external_inventory()
+			call_deferred("clear_external_inventory")
 			bag.visible = false
 
 
@@ -117,3 +117,16 @@ func grabbed_slot_update():
 		grabbed_slot.set_slot_data(grabbed_slot_data)
 	else :
 		grabbed_slot.visible = false
+
+
+func _on_bag_visibility_changed() -> void:
+	if !bag.visible and  grabbed_slot_data and !box_inventory:
+		grabbed_slot_data = player.inventory_data.pick_slot_updata(grabbed_slot_data)
+		
+	if !bag.visible and  grabbed_slot_data and box_inventory:
+		#bgrabbed_slot_data = player.inventory_data.pick_slot_updata(grabbed_slot_data)
+		grabbed_slot_data = box_inventory.inventory_data.pick_slot_updata(grabbed_slot_data)
+	
+	
+	
+	grabbed_slot_update()

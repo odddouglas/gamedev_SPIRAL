@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://30tqs6xniq1w"]
+[gd_scene load_steps=32 format=4 uid="uid://30tqs6xniq1w"]
 
 [ext_resource type="PackedScene" uid="uid://dxavgyl6lna43" path="res://object/player.tscn" id="1_fyhpy"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_q3jjg"]
 [ext_resource type="AudioStream" uid="uid://shkvbaruuh6v" path="res://assets/music/world1.mp3" id="2_n1d4h"]
+[ext_resource type="PackedScene" uid="uid://d260wyrtql2g8" path="res://scenes/box_2.tscn" id="3_2jj1a"]
 [ext_resource type="PackedScene" uid="uid://0w5x03hyk7s6" path="res://object/item.tscn" id="3_fcaye"]
 [ext_resource type="Resource" uid="uid://dwlohlphr5wrw" path="res://resource/pick_item/items.tres" id="4_hgl8f"]
 [ext_resource type="Script" uid="uid://0p64ty0leoe1" path="res://scripts/player.gd" id="5_rli88"]
@@ -484,6 +485,11 @@ position = Vector2(415, 184)
 collision_layer = 3
 collision_mask = 2
 
+[node name="box_2" parent="." instance=ExtResource("3_2jj1a")]
+position = Vector2(475, 184)
+collision_layer = 3
+collision_mask = 2
+
 [node name="YSort" type="Node2D" parent="."]
 
 [node name="Mirror" parent="YSort" node_paths=PackedStringArray("character") instance=ExtResource("6_gt337")]
@@ -533,3 +539,5 @@ layout_mode = 1
 [node name="bag2" parent="CanvasLayer/ui_interface" instance=ExtResource("20_c2h5s")]
 visible = false
 layout_mode = 1
+
+[connection signal="visibility_changed" from="CanvasLayer/ui_interface/bag" to="CanvasLayer/ui_interface" method="_on_bag_visibility_changed"]
