@@ -305,7 +305,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -365,7 +365,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -434,7 +434,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"left_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -503,7 +503,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"right_run",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -534,7 +534,7 @@ collision_mask = 14
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rqpcb")
-animation = &"back_run"
+animation = &"front_idle"
 autoplay = "front_idle"
 script = ExtResource("3_rvxbu")
 
