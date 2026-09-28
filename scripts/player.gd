@@ -6,28 +6,51 @@ class_name Player
 #规定角色相关常量
 const SPEED_WALK = 100.0 # 步行速度
 const SPEED_RUN = 160.0 # 跑步速度
+const JUMP_HEIGHT = 16.0
 #规定角色相关变量
 var INTERACT_AREA: Area2D = null # 停留的交互区域
 var INTERACT_DIALOGUE: StringName = &"pickup_ornot"
+var is_jumping := false
+var jump_elapsed := 0.0
+var jump_duration := 0.0
+var jump_ground_y := 0.0
+var jump_velocity := Vector2.ZERO
 
 
 func _ready() -> void:
 	# 连接对话管理器的对话结束事件
 	DialogueManager.connect("dialogue_ended", _on_dialogue_ended)
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
 # 物理帧处理函数
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# 检测是否处于可以移动的状态，如果不是，则直接return
 	if not Game.CAN_MOVE:
+		if is_jumping:
+			animated_sprite_2d.position.y = jump_ground_y
+		is_jumping = false
 		velocity = Vector2.ZERO # 停止移动
 		animated_sprite_2d.play_idle_animation()
 		return
-	
-	# 检测是否按住了 Shift 键
+
 	var is_running = Input.is_action_pressed("shift")
-	
-	# 获取玩家的输入方向向量
 	var direction = Input.get_vector("left", "right", "up", "down")
+
+	if not is_jumping and Input.is_action_just_pressed("jump"):
+		is_jumping = true
+		jump_velocity = direction * (SPEED_RUN if is_running else SPEED_WALK)
+		jump_ground_y = animated_sprite_2d.position.y
+		jump_elapsed = 0.0
+		animated_sprite_2d.play_jump_animation(direction)
+		jump_duration = float(animated_sprite_2d.sprite_frames.get_frame_count(animated_sprite_2d.animation)) / animated_sprite_2d.sprite_frames.get_animation_speed(animated_sprite_2d.animation)
+
+	if is_jumping:
+		velocity = jump_velocity
+		move_and_slide()
+		jump_elapsed = minf(jump_elapsed + delta, jump_duration)
+		var phase = jump_elapsed / jump_duration
+		animated_sprite_2d.position.y = jump_ground_y - 4.0 * JUMP_HEIGHT * phase * (1.0 - phase)
+		return
 	
 	# 如果有方向输入，设置速度矢量
 	if direction:
@@ -47,6 +70,13 @@ func _physics_process(_delta: float) -> void:
 
 	# 移动角色并处理碰撞
 	move_and_slide()
+
+
+func _on_animation_finished() -> void:
+	if is_jumping:
+		is_jumping = false
+		animated_sprite_2d.position.y = jump_ground_y
+		animated_sprite_2d.play_idle_animation()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
