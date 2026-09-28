@@ -1,15 +1,12 @@
 ~ pickup_ornot
-odddouglas: [shake rate=20 level=10][[Wow!|God!|Oh!]][/shake], What's this?
-odddouglas: Pick up? or not?.
+odddouglas: Pick up the ember?
 
 - (Pick it up)
 	if not Game.CAN_PICKUP:
 		set Game.CAN_PICKUP = true
-	odddouglas: Hope it helped.
-- (Ignore it)
-	odddouglas: Useless.
-- (Think about it..) 
-	=> pickup_ornot
+	=> END
+- (Leave it)
+	=> END
 
 ~ npc_intro
 keeper: You finally woke up.
@@ -17,8 +14,10 @@ keeper: This ruin is going dark. The ember nearby is our only light.
 
 - (Where is the ember?)
 	keeper: It is close. Take it before the dark finds you.
+	=> END
 - (I will find it.)
 	keeper: Bring it back when you know what it is hiding.
+	=> END
 
 ~ npc_return
 keeper: You found the ember.

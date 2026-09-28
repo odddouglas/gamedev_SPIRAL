@@ -10,6 +10,7 @@ const JUMP_HEIGHT = 16.0
 #规定角色相关变量
 var INTERACT_AREA: Area2D = null # 停留的交互区域
 var INTERACT_DIALOGUE: StringName = &"pickup_ornot"
+var dialogue_balloon: Node = null
 var is_jumping := false
 var jump_elapsed := 0.0
 var jump_duration := 0.0
@@ -21,6 +22,15 @@ func _ready() -> void:
 	# 连接对话管理器的对话结束事件
 	DialogueManager.connect("dialogue_ended", _on_dialogue_ended)
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel") and not event.is_echo() and is_instance_valid(dialogue_balloon):
+		get_viewport().set_input_as_handled()
+		dialogue_balloon.queue_free()
+		dialogue_balloon = null
+		Game.CAN_PICKUP = false
+		Game.CAN_MOVE = true
+		INTERACT_AREA = null
 
 # 物理帧处理函数
 func _physics_process(delta: float) -> void:
@@ -90,12 +100,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		return
 
 	Game.CAN_MOVE = false # 限制角色移动
-	DialogueManager.show_dialogue_balloon(load("res://dialogue/test.dialogue"), INTERACT_DIALOGUE)
+	dialogue_balloon = DialogueManager.show_dialogue_balloon(load("res://dialogue/test.dialogue"), INTERACT_DIALOGUE)
 
 #对话框结束的处理函数（需要在ready函数中connect）
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	#resource这个参数不用也要传
-	print("Dialogue finished:", resource)
+	dialogue_balloon = null
 	Game.CAN_MOVE = true # 解除角色移动的限制
 	if INTERACT_AREA is Item and Game.CAN_PICKUP and is_instance_valid(INTERACT_AREA):
 		INTERACT_AREA.queue_free() # 销毁交互区域
