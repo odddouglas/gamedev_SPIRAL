@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		jump_elapsed = minf(jump_elapsed + delta, jump_duration)
 		var phase = jump_elapsed / jump_duration
-		animated_sprite_2d.position.y = jump_ground_y - 4.0 * JUMP_HEIGHT * phase * (1.0 - phase)
+		animated_sprite_2d.position.y = roundf(jump_ground_y - 4.0 * JUMP_HEIGHT * phase * (1.0 - phase))
 		return
 	
 	# 如果有方向输入，设置速度矢量

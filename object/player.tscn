@@ -341,16 +341,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_back_jump_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_back_jump_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_back_jump_0")
 }],
 "loop": false,
 "name": &"back_jump",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -421,16 +415,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_front_jump_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_front_jump_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_front_jump_0")
 }],
 "loop": false,
 "name": &"front_jump",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -510,16 +498,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_left_jump_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_left_jump_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_left_jump_0")
 }],
 "loop": false,
 "name": &"left_jump",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -599,16 +581,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_right_jump_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_right_jump_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_right_jump_0")
 }],
 "loop": false,
 "name": &"right_jump",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
