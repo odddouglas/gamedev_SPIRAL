@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://30tqs6xniq1w"]
+[gd_scene load_steps=13 format=4 uid="uid://30tqs6xniq1w"]
 
 [ext_resource type="PackedScene" uid="uid://dxavgyl6lna43" path="res://object/player.tscn" id="1_fyhpy"]
 [ext_resource type="Texture2D" uid="uid://bhra2nfo0ldw1" path="res://assets/tileset/Dungeon_Tileset.png" id="1_q3jjg"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0w5x03hyk7s6" path="res://object/item.tscn" id="3_fcaye"]
 [ext_resource type="Resource" uid="uid://dwlohlphr5wrw" path="res://resource/pick_item/items.tres" id="4_hgl8f"]
 [ext_resource type="Script" uid="uid://0p64ty0leoe1" path="res://scripts/player.gd" id="5_rli88"]
-[ext_resource type="PackedScene" uid="uid://beftufaej1xsj" path="res://object/mirror.tscn" id="6_gt337"]
-[ext_resource type="Script" uid="uid://blju32th127tt" path="res://scripts/mirror.gd" id="7_o24d1"]
+[ext_resource type="PackedScene" path="res://object/npc.tscn" id="6_npc"]
 [ext_resource type="PackedScene" uid="uid://cqxdd88nhupuu" path="res://scenes/select_ui.tscn" id="9_62ogi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2rag"]
@@ -428,16 +427,13 @@ tile_set = SubResource("TileSet_j2vt7")
 
 [node name="YSort" type="Node2D" parent="."]
 
-[node name="Mirror" parent="YSort" node_paths=PackedStringArray("character") instance=ExtResource("6_gt337")]
-position = Vector2(339, 199)
-script = ExtResource("7_o24d1")
-character = NodePath("../Player")
-
 [node name="Player" parent="YSort" instance=ExtResource("1_fyhpy")]
-visibility_layer = 14
 position = Vector2(339, 229)
 script = ExtResource("5_rli88")
 metadata/_edit_group_ = true
+
+[node name="Keeper" parent="YSort" instance=ExtResource("6_npc")]
+position = Vector2(385, 229)
 
 [node name="item" parent="." instance=ExtResource("3_fcaye")]
 position = Vector2(317, 246)

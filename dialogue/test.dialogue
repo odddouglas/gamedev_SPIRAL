@@ -8,5 +8,22 @@ odddouglas: Pick up? or not?.
 	odddouglas: Hope it helped.
 - (Ignore it)
 	odddouglas: Useless.
-- (Think about it) 
+- (Think about it..) 
 	=> pickup_ornot
+
+~ npc_intro
+keeper: You finally woke up.
+keeper: This ruin is going dark. The ember nearby is our only light.
+
+- (Where is the ember?)
+	keeper: It is close. Take it before the dark finds you.
+- (I will find it.)
+	keeper: Bring it back when you know what it is hiding.
+
+~ npc_return
+keeper: You found the ember.
+keeper: Hold it close. It remembers a path the ruin forgot.
+- (What path?)
+	keeper: The sealed gate beyond this room is waiting for its light.
+- (I am ready.)
+	keeper: Then follow the warm stones.
